@@ -112,22 +112,18 @@ $("#submit-button").on("click", function () {
         haveSelected = false;
         console.log("this is selected: " + selected);
         arrayIndex.usersAnswer = selected;
-        // console.log(tempGameArray);
+     
+        console.log(tempGameArray);
         // $('.radio-button').attr('checked', false);
         $("#selection-area").empty();
         displayQuestion(index);
 
     } else {
         console.log("nope");
+        alert("Please make a selection");
     }
 
 
 });
-
-
-// $("#submit-button").on("click", ".radio-button, function () {
-//     value = $(this).attr("value");
-
-// });
 
 
