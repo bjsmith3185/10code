@@ -496,43 +496,43 @@ var quiz = [
     },
 ];
 
-var allAnswersArray = [];
-function getIndexes() {
-    for (var i = 0; i < quiz.length; i ++) {
-        allAnswersArray.push(quiz[i].correctAnswer);
-    };
-};
+// var allAnswersArray = [];
+// function getIndexes() {
+//     for (var i = 0; i < quiz.length; i ++) {
+//         allAnswersArray.push(quiz[i].correctAnswer);
+//     };
+// };
 
-getIndexes();
-console.log(allAnswersArray);
+// getIndexes();
+// console.log(allAnswersArray);
 
 
 
-var num = new Array();
-var randomIndexArray = [];
+// var num = new Array();
+// var randomIndexArray = [];
 
-function selectAnswers() {
-    for (i=0; i<3; i++) {
-        num[i]=Math.floor(99*Math.random());
-        if(num[1]==num[0]){
-            while(num[1]==num[0]){
-            num[1]=Math.floor(99*Math.random());
-            };
-        };
+// function selectAnswers() {
+//     for (i=0; i<3; i++) {
+//         num[i]=Math.floor(99*Math.random());
+//         if(num[1]==num[0]){
+//             while(num[1]==num[0]){
+//             num[1]=Math.floor(99*Math.random());
+//             };
+//         };
         
-        if(num[2]==num[1] || num[2]==num[0]){
-            while(num[2]==num[1] || num[2]==num[0]){
-                num[2]=Math.floor(99*Math.random());
-            };
-        };
-        console.log(num[i])
-        var j = num[i];
-        console.log("this is J: " + j);
-        randomIndexArray.push(allAnswersArray[j]);
-        console.log("answers array: " + randomIndexArray);
-    };
+//         if(num[2]==num[1] || num[2]==num[0]){
+//             while(num[2]==num[1] || num[2]==num[0]){
+//                 num[2]=Math.floor(99*Math.random());
+//             };
+//         };
+//         console.log(num[i])
+//         var j = num[i];
+//         console.log("this is J: " + j);
+//         randomIndexArray.push(allAnswersArray[j]);
+//         console.log("answers array: " + randomIndexArray);
+//     };
 
     
-};
+// };
 
-selectAnswers();
+// selectAnswers();
