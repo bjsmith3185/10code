@@ -1,0 +1,53 @@
+
+
+randomly select 15 questions from the 100 available
+
+ask the question
+    - use radio buttons to select your answer
+    - compare the user answer "a-d" to the answer key "a-d"
+    - store the incorrect key locations to be displayed at the end
+    - increase the count for the correct answers
+
+timer for question
+    - each question will remain for 10 seconds
+        - then the screen will change to the next questions
+        - if the user does not select and answer
+            - log this as incorrect
+            - store in the incorrect key location from above
+    - if the user selects before 10 seconds
+        - display the next question
+
+end of game
+    - display the number of correct and incorrect selections
+    - display the incorrect questions with the correct answer
+
+reset button 
+
+----------------------------------------------------------------
+
+function to select 3 random answers from the array and include the correct answer;
+    - how to get three random numbers not already selected
+
+    - have 3 random answers
+        - add the chosen index.correctanswer to the array
+        - sort() the array
+
+
+   
+
+buttons to select 10 code quiz, 20 code quiz, 50 code quiz or 99 code quiz;
+    randomly select 10, 20, 50 or 99 to make the quiz array
+        - use function not to repeat
+
+function to check answers
+for loop the length of the quiz array
+    - compare the (quiz[i].correctanswer === quiz[i].useranswer)
+        if true
+            display 10%
+        if false at the [i]
+            display quiz[i].question
+            display quix[i].correctanswer
+            display quiz[i].useranswer (turn this one red or strike thru).
+            display the grade as a perentage.
+
+
