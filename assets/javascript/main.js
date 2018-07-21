@@ -1,4 +1,6 @@
 
+$(".quiz-screen").show();
+$(".result-screen").hide();
 // array for holding the answers choose from in the dom
 var allAnswersArray = [];
 function getIndexes() {
@@ -11,14 +13,14 @@ getIndexes();
 // console.log(allAnswersArray);
 //----------------------------
 
-// function to select the question index and display answers in dom
+// function to select the question and display answers in dom
 
 var index = 0;
 var num = new Array();
 var tempGameArray = [];
 
 function displayQuestion(index) {
-    var randomAnswersArray = [];
+   
     // display question in dom
     var x = quiz[index];
     console.log("question: " + x.question);
@@ -35,6 +37,7 @@ function displayQuestion(index) {
     //==================================
 
     // display the possible answers in dom
+     var randomAnswersArray = [];
     for (i = 0; i < 3; i++) {
         num[i] = Math.floor(99 * Math.random());
         if (num[1] == num[0]) {
@@ -87,6 +90,7 @@ function radioBtnVal(x) {
 $("#submit-button").on("click", function () {
     if (haveSelected) {
         haveSelected = false;
+        $("#display-selected").empty();
         console.log("this is selected: " + selected);
 
         // push the selected answer to the tempArray
@@ -96,15 +100,20 @@ $("#submit-button").on("click", function () {
         console.log("==================");
         //==================================
 
-        
+        if (tempGameArray.length === quiz.length) {
 
-        //==================================
-        // empty the radio button area
-        // increase index++
-        // call displayQuestion()
-        index++;
-        $("#selection-area").empty();
-        displayQuestion(index);
+            checkAnswers();
+        } else {
+            //==================================
+            // empty the radio button area
+            // increase index++
+            // call displayQuestion()
+            index++;
+            $("#selection-area").empty();
+            displayQuestion(index);
+        }
+
+        
 
     } else {
         console.log("nope");
@@ -113,4 +122,72 @@ $("#submit-button").on("click", function () {
 });
 
 
+
+
+var missedAnswerArray = [];
+
+function checkAnswers() {
+   
+    for (var i = 0; i < tempGameArray.length; i++) {
+
+        console.log("this is tempgamearray " + tempGameArray[i].correctAnswer);
+        console.log("this is tempgamearray " + tempGameArray[i].selectedAnswer);
+        if (tempGameArray[i].selectedAnswer !== tempGameArray[i].correctAnswer) {
+            var wrongObj = new Object();
+            wrongObj.question = tempGameArray[i].question;
+            wrongObj.correctAnswer = tempGameArray[i].correctAnswer;
+            wrongObj.selectedAnswer = tempGameArray[i].selectedAnswer;
+            missedAnswerArray.push(wrongObj);
+        }
+    };
+    console.log(missedAnswerArray);
+    $(".quiz-screen").hide();
+    $(".result-screen").show();
+    results();
+
+};
+
+
+function results() {
+    if (missedAnswerArray.length === 0) {
+        var correct = $("<div>");
+        correct.attr("class", "all-correct").text("Great Job. 100% Correct");
+        $(".display-results").append(correct);
+    } else {
+        for (var i = 0; i < missedAnswerArray.length; i++) {
+            var questionDiv = $("<div>");
+            questionDiv.text(missedAnswerArray[i].question);
+            var correctDiv = $("<div>");
+            correctDiv.text(missedAnswerArray[i].correctAnswer);
+            var userSelectedDiv = $("<div>");
+            userSelectedDiv.text(missedAnswerArray[i].selectedAnswer);
+    
+            questionDiv.append(correctDiv).append(userSelectedDiv);
+            $(".display-results").append(questionDiv);
+        };
+
+    };
+    $("#reset").on("click", function() {
+        reset();
+    })
+};
+
+
+function reset() {
+    missedAnswerArray = [];
+    tempGameArray = [];
+    allAnswersArray = [];
+    index = 0;
+    num = new Array();
+    tempGameArray = [];
+    $(".display-question").empty();
+    $("#display-selected").empty();
+    $("#selection-area").empty();
+    $(".display-results").empty();
+
+    $(".quiz-screen").show();
+    $(".result-screen").hide();
+
+
+}
 

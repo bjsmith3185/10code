@@ -13,14 +13,14 @@ getIndexes();
 // console.log(allAnswersArray);
 //----------------------------
 
-// function to select the question index and display answers in dom
+// function to select the question and display answers in dom
 
 var index = 0;
 var num = new Array();
 var tempGameArray = [];
 
 function displayQuestion(index) {
-    var randomAnswersArray = [];
+   
     // display question in dom
     var x = quiz[index];
     console.log("question: " + x.question);
@@ -37,6 +37,7 @@ function displayQuestion(index) {
     //==================================
 
     // display the possible answers in dom
+     var randomAnswersArray = [];
     for (i = 0; i < 3; i++) {
         num[i] = Math.floor(99 * Math.random());
         if (num[1] == num[0]) {
