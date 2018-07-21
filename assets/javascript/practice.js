@@ -1,28 +1,57 @@
 
 $(".quiz-screen").show();
 $(".result-screen").hide();
-// array for holding the answers choose from in the dom
+
+//========= new function to let user pick length of quiz ===
+var lengthOfQuiz = 15;
+var num = new Array();
+var randomNumberQuestionArray = [];
+
+// display the possible answers in dom
+for (i = 0; i < lengthOfQuiz; i++) {
+    num[i] = Math.floor(99 * Math.random());
+    if (num[1] == num[0]) {
+        while (num[1] == num[0]) {
+            num[1] = Math.floor(99 * Math.random());
+        };
+    };
+
+    if (num[2] == num[1] || num[2] == num[0]) {
+        while (num[2] == num[1] || num[2] == num[0]) {
+            num[2] = Math.floor(99 * Math.random());
+        };
+    };
+    var j = num[i];
+    randomNumberQuestionArray.push(quiz[j]);
+};
+console.log("this is randomNumberQuestionArray below");
+console.log(randomNumberQuestionArray);
+
+//===== end of function to pick length of quiz =======
+
+//===========new array for holding all answers ======
 var allAnswersArray = [];
-function getIndexes() {
-    for (var i = 0; i < quiz.length; i++) {
-        allAnswersArray.push(quiz[i].correctAnswer);
+function getIndexes(newArr, lengthOfQuiz) {
+
+    for (var i = 0; i < lengthOfQuiz; i++) {
+        allAnswersArray.push(newArr[i].correctAnswer);
     };
 };
 
-getIndexes();
-// console.log(allAnswersArray);
-//----------------------------
+getIndexes(randomNumberQuestionArray, lengthOfQuiz);
+console.log("this is array with all possible answers:");
+console.log(allAnswersArray);
+//======= end of new arrray for holding all answers ======
 
-// function to select the question and display answers in dom
-
-var index = 0;
-var num = new Array();
+// === new function to select the question and display answers in dom
+var index = 1;
 var tempGameArray = [];
+var num = new Array();
 
-function displayQuestion(index) {
+function displayQuestion(i, inputArray) {
    
     // display question in dom
-    var x = quiz[index];
+    var x = inputArray[i];
     console.log("question: " + x.question);
     console.log("this is the answer: " + x.correctAnswer);
     $(".display-question").text(x.question);
@@ -33,10 +62,13 @@ function displayQuestion(index) {
     objectForArray.correctAnswer = x.correctAnswer;
     tempGameArray.push(objectForArray);
 
+    console.log("this is tempGameArray below");
+    console.log(tempGameArray);
 
-    //==================================
 
-    // display the possible answers in dom
+    // //==================================
+
+    // // display the possible answers in dom
      var randomAnswersArray = [];
     for (i = 0; i < 3; i++) {
         num[i] = Math.floor(99 * Math.random());
@@ -56,7 +88,7 @@ function displayQuestion(index) {
     };
     randomAnswersArray.push(x.correctAnswer);
 
-    // put the random .sort() here ==============
+    // // put the random .sort() here ==============
 
     randomAnswersArray.sort(function (a, b) { return 0.5 - Math.random() });
     // console.log("this is answer array: " + randomAnswersArray);
@@ -70,8 +102,9 @@ function displayQuestion(index) {
 
 };
 
+//====== end of new function to display answers in the dom =====
 
-displayQuestion(index);
+displayQuestion(index, randomNumberQuestionArray);
 
 
 // function for radio button value
