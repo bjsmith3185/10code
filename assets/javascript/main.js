@@ -1,8 +1,4 @@
 
-
-
-
-
 // array for holding the answers choose from in the dom
 var allAnswersArray = [];
 function getIndexes() {
@@ -15,33 +11,30 @@ getIndexes();
 // console.log(allAnswersArray);
 //----------------------------
 
+// function to select the question index and display answers in dom
 
-
-
-
-//--------------variables -----------
-var selected;
-var haveSelected = false;
-
+var index = 0;
 var num = new Array();
-var randomIndexArray = [];
-
-// copy the quiz array to create one to use for the program
-// clear the "tempGameArray" upon reset;
-var tempGameArray = quiz;
-
-// var randomNumber = 0; // this will be the index value
-var index = Math.floor(Math.random() * tempGameArray.length - 1);
-// var index = 0;
-var arrayIndex = tempGameArray[index];  // this will be the array with index
+var tempGameArray = [];
 
 function displayQuestion(index) {
-    var x = tempGameArray[index];
-    // console.log(x);
-    console.log("this is the answer: "+ x.correctAnswer);
+    var randomAnswersArray = [];
+    // display question in dom
+    var x = quiz[index];
     console.log("question: " + x.question);
+    console.log("this is the answer: " + x.correctAnswer);
     $(".display-question").text(x.question);
 
+    // push the question and correct answer to the temp object
+    var objectForArray = new Object();
+    objectForArray.question = x.question;
+    objectForArray.correctAnswer = x.correctAnswer;
+    tempGameArray.push(objectForArray);
+
+
+    //==================================
+
+    // display the possible answers in dom
     for (i = 0; i < 3; i++) {
         num[i] = Math.floor(99 * Math.random());
         if (num[1] == num[0]) {
@@ -55,75 +48,69 @@ function displayQuestion(index) {
                 num[2] = Math.floor(99 * Math.random());
             };
         };
-        // console.log(num[i])
         var j = num[i];
-        // console.log("this is J: " + j);
-        randomIndexArray.push(allAnswersArray[j]);
-        // console.log("answers array: " + randomIndexArray);
+        randomAnswersArray.push(allAnswersArray[j]);
     };
-
-    // add the correct answer to the array, randomIndexArray
-    randomIndexArray.push(x.correctAnswer);
+    randomAnswersArray.push(x.correctAnswer);
 
     // put the random .sort() here ==============
 
-    randomIndexArray.sort(function(a, b){return 0.5 - Math.random()});
-    // console.log("this should have a random index: " + randomIndexArray);
-
+    randomAnswersArray.sort(function (a, b) { return 0.5 - Math.random() });
+    // console.log("this is answer array: " + randomAnswersArray);
     //=============================================
-
-    // this loop put the answers to select from in the dom
-    // for (var i = 0; i < 4; i++) {
-    //     // console.log("");
-    //     var answers = randomIndexArray[i];
-    //     $("#selection" + i).text(answers);
-    // };
 
     // create radio buttons and populate with random answers
     for (var i = 0; i < 4; i++) {
-        var answers = randomIndexArray[i];
-        $("#selection-area").append("<input type='radio' class='radio-button' onclick='radioBtnVal(this.value)' name='questions' value='"+answers+"' text='" + answers + "'>").append("<span> " + answers + "</span>").append("<br>");
-
-        // var radioBtn = $("<input/>");
-        // radioBtn.attr("type", "radio").attr("class", "radio-button").attr("name", "questions").attr("value", answers);
-        // radioBtn.attr("onclick", "radioBtnVal(this.value)").text(answers);
-        // $("#selection-area").append(radioBtn);
+        var answers = randomAnswersArray[i];
+        $("#selection-area").append("<input type='radio' class='radio-button' onclick='radioBtnVal(this.value)' name='questions' value='" + answers + "' text='" + answers + "'>").append("<span> " + answers + "</span>").append("<br>");
     };
-
-   
-    index++;
-    //===============================
 
 };
 
 
 displayQuestion(index);
 
+
+// function for radio button value
+var selected;
+var haveSelected = false;
+
 function radioBtnVal(x) {
     $("#display-selected").text(x);
     selected = x;
     // console.log(selected);
     haveSelected = true;
-
 };
+
+
 
 $("#submit-button").on("click", function () {
     if (haveSelected) {
         haveSelected = false;
         console.log("this is selected: " + selected);
-        arrayIndex.usersAnswer = selected;
-     
+
+        // push the selected answer to the tempArray
+        tempGameArray[index].selectedAnswer = selected;
+        console.log("this is the temp game array");
         console.log(tempGameArray);
-        // $('.radio-button').attr('checked', false);
+        console.log("==================");
+        //==================================
+
+        
+
+        //==================================
+        // empty the radio button area
+        // increase index++
+        // call displayQuestion()
+        index++;
         $("#selection-area").empty();
         displayQuestion(index);
 
     } else {
         console.log("nope");
         alert("Please make a selection");
-    }
-
-
+    };
 });
+
 
 
