@@ -149,7 +149,9 @@ function checkAnswers() {
 
 
 function results() {
-    if (missedAnswerArray < 0) {
+    if (missedAnswerArray.length === 0) {
+        console.log("this is missing" + missedAnswerArray);
+        alert("good job");
         var correct = $("<div>");
         correct.attr("class", "all-correct").text("Great Job. 100% Correct");
         $(".display-results").append(correct);
