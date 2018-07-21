@@ -6,7 +6,8 @@ $(".result-screen").hide();
 var lenghtSelected = false;
 
 $("#quiz-length-submit").on("click", function () {
-    lengthOfQuiz = $("#quiz-length").val()
+    lengthOfQuiz = Number($("#quiz-length").val());
+    console.log(typeof(lengthOfQuiz));
     lenghtSelected = true;
     console.log("this is the value entered: " + lengthOfQuiz);
     $(".welcome").hide()
