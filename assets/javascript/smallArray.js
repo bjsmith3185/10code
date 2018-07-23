@@ -1,18 +1,4 @@
-var quiz = [
-    {   question: "10-1",
-        correctAnswer: "signal weak",
-        usersAnswer: "",
-    },
-    {   question: "10-2",
-        correctAnswer: "signal good",
-        usersAnswer: "",
-    },
-    {   question: "10-3",
-        correctAnswer: "stop transmitting",
-        usersAnswer: "",
-    },
-    {   question: "10-4",
-        correctAnswer: "affirmative",
-        usersAnswer: "",
-    },
-];
+
+ $(".welcome").hide()
+ $(".quiz-screen").hide();
+ $(".result-screen").show();

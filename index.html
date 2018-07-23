@@ -10,36 +10,102 @@
     <link rel='stylesheet' href='assets/css/style.css'>
 </head>
 <body>
+<!-- <div class="body-container"> -->
 
-<div class="welcome">
-    <input type="text" id="quiz-length">
-    <button class="btn btn-default" id="quiz-length-submit">submit</button>
-</div>
+    <!-- welcome screen  -->
+    <div class="welcome">
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <h1 class="title">Police 10-Code Quiz</h1>
+                <h3 class="instructions text-center">Select the length of the exam.</h3>
+                <h4 class="instructions text-center">(Enter a number between 10 and 95.)</h4>
+               
+            </div>
+        </div>
 
+        <div class="row">
+            <div class="col-xs-12 submit-body text-center">
+                <input class="welcome-area text-center" type="text" id="quiz-length">
+                <button class="btn btn-default welcome-button text-center" id="quiz-length-submit">Begin</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 welcome-body text-center">
+                <h3 class="instructions text-center">Press Begin to start the quiz.</h3>
+            </div>
+        </div>
+    </div>
 
-<div class="quiz-screen">
-    <div class="display-question">question here</div><br>
-    <div id="display-selected">here</div>
+    <!-- quiz screen  -->
 
-    <form id="selection-area"></form>
-    <button class="btn btn-default" id="submit-button">submit</button>
-</div>
+    <div class="quiz-screen">
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <h1 class="title-quiz">Police 10-Code Quiz</h1>
+                
+            </div>
+        </div>
 
-<div class="result-screen">
-    <div class="display-results"></div>
-    <button id="reset">Reset</button>
-</div>
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <div class="display-question-area">What is: <span class="display-question"></span></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <div id="display-selected-area"><span id="display-selected"></span></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-1"></div>
+            <div class="col-xs-11">
+                <form id="selection-area"></form>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 text-center submit-button">
+                    <h4 class="instructions instructions-quiz text-center">(Select your answer and press Submit.)</h4>
+
+                    <button class="btn btn-default" id="submit-button">submit</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- result screen  -->
+
+    <div class="result-screen">
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <h1 class="title-results">Police 10-Code Quiz</h1>
+                <h2 class="title-results-sub">Your results:</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <div class="display-results"></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <button id="reset">Reset</button>
+            </div>
+        </div>
+    </div>
    
+<!-- </div> -->
 
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js'></script>
     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
     <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
     <script type='text/javascript' src='assets/javascript/array.js'></script>
+       <script type='text/javascript' src='assets/javascript/pieces.js'></script>
     <!-- <script type='text/javascript' src='assets/javascript/smallArray.js'></script> -->
     <!-- <script type='text/javascript' src='assets/javascript/main.js'></script> -->
-   
-    <!-- <script type='text/javascript' src='assets/javascript/example.js'></script> -->
-    <!-- <script type='text/javascript' src='assets/javascript/startOver.js'></script>  -->
-    <script type='text/javascript' src='assets/javascript/practice.js'></script>
+    <!-- <script type='text/javascript' src='assets/javascript/practice.js'></script> -->
 </body>
 </html>
