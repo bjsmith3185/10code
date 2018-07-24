@@ -141,8 +141,10 @@ $("#quiz-full-submit").on("click",function() {
     endLength = 95;
     // console.log("this is ordered: " + ordered);
     // console.log("start: " + startLength + " end: " + endLength);
+
     makeQuizArray(startLength, endLength, examArray, ordered);
     displayQuestion(index, examArray);
+  
     $(".welcome").hide()
     $(".quiz-screen").show();
     // console.log(examArray);
@@ -158,8 +160,10 @@ $("#quiz-tens-submit").on("click",function() {
     // console.log(y);
     choiceOfTen(y);
     // console.log("start: " + startLength + " end: " + endLength);
+
     makeQuizArray(startLength, endLength, examArray, ordered);
     displayQuestion(index, examArray);
+ 
     $(".welcome").hide()
     $(".quiz-screen").show();
     // console.log(examArray);
@@ -178,6 +182,7 @@ $("#quiz-length-submit").on("click", function () {
     // console.log("start: " + startLength + " end: " + endLength);
     makeQuizArray(startLength, endLength, examArray, ordered);
     displayQuestion(index, examArray);
+
     $(".welcome").hide()
     $(".quiz-screen").show();
     // console.log(examArray);
@@ -210,7 +215,7 @@ function displayQuestion(i, inputArray) {
    answersWithoutCorrect(index, examArray);
 
    if (randomAnswersArray.length === 0) {
-        answersWithoutCorrect();
+        answersWithoutCorrect(index, examArray);
         console.log("it is 0")
         randomAnswersArray.push(x.correctAnswer);
         randomAnswersArray.sort(function (a, b) { return 0.5 - Math.random() });
@@ -353,17 +358,22 @@ function results() {
 
 //====== function to reset ========
 function reset() {
+    startLength;
+    endLength;
+    ordered = true;
+    examArray = [];
+    index = 0;
+    tempGameArray = [];
+    lengthOfQuiz;
+    allAnswersArray = [];
     selected;
     haveSelected = false;
     missedAnswerArray = [];
-    tempGameArray = [];
-    allAnswersArray = [];
-    index = 0;
-    num = new Array();
-    tempGameArray = [];
-    lengthOfQuiz;
-    randomNumberQuestionArray = [];
-   
+    randomAnswersArray = [];
+    answerChoices(quiz);
+    // num = new Array();
+    console.log("This is a new quiz");
+      
     $(".display-question").empty();
     $("#display-selected").empty();
     $("#selection-area").empty();
