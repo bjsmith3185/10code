@@ -216,7 +216,7 @@ function displayQuestion(i, inputArray) {
 
    if (randomAnswersArray.length === 0) {
         answersWithoutCorrect(index, examArray);
-        console.log("it is 0")
+        // console.log("it is 0")
         randomAnswersArray.push(x.correctAnswer);
         randomAnswersArray.sort(function (a, b) { return 0.5 - Math.random() });
     } else {
@@ -226,7 +226,7 @@ function displayQuestion(i, inputArray) {
 
 
 
-console.log("this is $$$$$$$$$$$$: " + randomAnswersArray);
+// console.log("this is $$$$$$$$$$$$: " + randomAnswersArray);
 
     //=============================================
 
@@ -251,7 +251,7 @@ function answersWithoutCorrect(i, inputArray) {
   
         for (var i = 0; i < randomAnswersArray.length; i++) {
         if (x.correctAnswer === randomAnswersArray[i]) {    //000000000000000
-            console.log("in there twice");
+            // console.log("in there twice");
             randomAnswersArray = [];
            
         }
@@ -270,11 +270,11 @@ $("#submit-button").on("click", function () {
       
         // push the selected answer to the tempArray
         tempGameArray[index].selectedAnswer = selected;
-        console.log("this is the temp game array");
-        console.log(tempGameArray);
-        console.log("==================");
+        // console.log("this is the temp game array");
+        // console.log(tempGameArray);
+        // console.log("==================");
         //==================================
-        console.log("current: " + tempGameArray.length + " game: " + examArray.length);
+        // console.log("current: " + tempGameArray.length + " game: " + examArray.length);
         if (tempGameArray.length === examArray.length) {
             alert("checking answers")
             $(".quiz-screen").hide()
@@ -334,6 +334,7 @@ function results() {
         correct.attr("class", "all-correct").text("Great Job. 100% Correct");
         $(".display-results").append(correct);
     } else {
+        
         for (var i = 0; i < missedAnswerArray.length; i++) {
             var questionDiv = $("<div>").attr("class", "result-question");
             questionDiv.text("Code: " + missedAnswerArray[i].question);
@@ -348,6 +349,14 @@ function results() {
             // questionDiv.append(correctDiv).append(userSelectedDiv);
             $(".display-results").append(questionDiv).append(correctDiv).append(userSelectedDiv);
         };
+
+        
+
+        var grade = Math.floor((missedAnswerArray.length / examArray.length) * 100);
+        console.log("this is grade: " + grade + "%");
+
+            $(".grade").text("You scored " + grade + "%");
+
 
     };
     $("#reset").on("click", function () {
