@@ -14,7 +14,8 @@ var lengthOfQuiz;
 var allAnswersArray = [];
 var selected;
 var haveSelected = false;
-var  missedAnswerArray = [];
+var missedAnswerArray = [];
+var randomAnswersArray = [];
 
 
 
@@ -206,19 +207,22 @@ function displayQuestion(i, inputArray) {
 
     //==================================
     // display the possible answers in dom
-    var randomAnswersArray = [];
-    do {
-        randomAnswersArray[randomAnswersArray.length] = allAnswersArray.splice(Math.floor(Math.random() * allAnswersArray.length), 1)[0];
-        } while (randomAnswersArray.length < 3);
-        
-        // console.log(randomAnswersArray);
-    randomAnswersArray.push(x.correctAnswer);
+   answersWithoutCorrect(index, examArray);
 
-    // console.log(randomAnswersArray);
+   if (randomAnswersArray.length === 0) {
+        answersWithoutCorrect();
+        console.log("it is 0")
+        randomAnswersArray.push(x.correctAnswer);
+        randomAnswersArray.sort(function (a, b) { return 0.5 - Math.random() });
+    } else {
+        randomAnswersArray.push(x.correctAnswer);
+        randomAnswersArray.sort(function (a, b) { return 0.5 - Math.random() });
+    }
 
-  
-    randomAnswersArray.sort(function (a, b) { return 0.5 - Math.random() });
-    // console.log("this is answer array: " + randomAnswersArray);
+
+
+console.log("this is $$$$$$$$$$$$: " + randomAnswersArray);
+
     //=============================================
 
     // create radio buttons and populate with random answers
@@ -229,6 +233,27 @@ function displayQuestion(i, inputArray) {
 
 };
 //====== end of new function to display answers in the dom =====
+
+//==== select random answers to display==============
+
+function answersWithoutCorrect(i, inputArray) {
+    randomAnswersArray = [];
+    var x = inputArray[i];
+    
+    do {
+        randomAnswersArray[randomAnswersArray.length] = allAnswersArray.splice(Math.floor(Math.random() * allAnswersArray.length), 1)[0];
+        } while (randomAnswersArray.length < 3);
+  
+        for (var i = 0; i < randomAnswersArray.length; i++) {
+        if (x.correctAnswer === randomAnswersArray[i]) {    //000000000000000
+            console.log("in there twice");
+            randomAnswersArray = [];
+           
+        }
+    };
+};
+//===================================================
+
 
 //===================================================================================================================
 //======= on click to submit your answer ============
