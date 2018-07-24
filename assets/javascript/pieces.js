@@ -19,10 +19,41 @@ $(document).ready(function(){
     var index = 0;
     var tempGameArray = [];
     var num = new Array();
-    var randomNumberQuestionArray = [];
+    var randomNumberQuestionArray = []; // array to use for quiz
     var missedAnswerArray = [];
 
-//========= welcome on click 
+//========= welcome on click ========
+
+    //=== full exam on click====
+
+    $("#quiz-full-submit").on("click",function() {
+    
+        var y = $("#fullExam").val();
+        console.log(y);
+        if (y === "assending") {
+            alert('hi');
+            answerChoices(quiz); // array with answers to select from
+            displayQuestion(index, quiz);
+            console.log(quiz);
+            $(".welcome").hide()
+            $(".quiz-screen").show();
+
+        }
+        
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
     $("#quiz-length-submit").on("click", function () {
         lengthOfQuiz = Number($("#quiz-length").val());
         // console.log(typeof (lengthOfQuiz));
@@ -33,8 +64,9 @@ $(document).ready(function(){
       
             // console.log("this is lengthSelected: " + lenghtSelected);
             // console.log("this is the value entered: " + lengthOfQuiz);
-            // startQuiz();
+            
             newLengthArray();  // array with quiz = to the selected length
+            // startQuiz();
             answerChoices(quiz); // array with answers to select from
             displayQuestion(index, randomNumberQuestionArray);
             $(".welcome").hide()
@@ -43,6 +75,32 @@ $(document).ready(function(){
          }
     });
 // ======================
+
+
+// function startQuiz() {
+//     answerChoices(quiz);
+//     displayQuestion(index, randomNumberQuestionArray);
+//     $(".welcome").hide()
+//     $(".quiz-screen").show();
+// };
+
+
+
+
+
+
+//====== function to shuffle the array ====
+
+    // function shuffle(o) {
+    //     for(var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+    //     return o;
+    // };
+
+    // var random = shuffle(quiz);
+
+    // console.log(random);
+
+//=======================================
 
 //========= new function to let user pick length of quiz ===
       function newLengthArray() {

@@ -27,15 +27,15 @@ $(document).ready(function(){
         lengthOfQuiz = Number($("#quiz-length").val());
         // console.log(typeof (lengthOfQuiz));
     
-        if (!lengthOfQuiz > 6) {
-            alert("Choose a number greater than 8");
+        if (!lengthOfQuiz > 10) {
+            alert("Choose a number greater than 10");
         } else {
       
             // console.log("this is lengthSelected: " + lenghtSelected);
-            console.log("this is the value entered: " + lengthOfQuiz);
+            // console.log("this is the value entered: " + lengthOfQuiz);
             // startQuiz();
             newLengthArray();  // array with quiz = to the selected length
-            getIndexes(randomNumberQuestionArray,lengthOfQuiz); // array with answers to select from
+            answerChoices(quiz); // array with answers to select from
             displayQuestion(index, randomNumberQuestionArray);
             $(".welcome").hide()
             $(".quiz-screen").show();
@@ -50,16 +50,16 @@ $(document).ready(function(){
         
 
         for (i = 0; i < lengthOfQuiz; i++) {
-            num[i] = Math.floor(99 * Math.random()); 
+            num[i] = Math.floor(95 * Math.random()); 
             if (num[1] == num[0]) {
                 while (num[1] == num[0]) {
-                    num[1] = Math.floor(99 * Math.random()); 
+                    num[1] = Math.floor(95 * Math.random()); 
                 };
             };
 
             if (num[2] == num[1] || num[2] == num[0]) {
                 while (num[2] == num[1] || num[2] == num[0]) {
-                    num[2] = Math.floor(99 * Math.random()); 
+                    num[2] = Math.floor(95 * Math.random()); 
                 };
             };
             var j = num[i];
@@ -71,12 +71,13 @@ $(document).ready(function(){
     //===== end of function to pick length of quiz =======
 
     //===== function to create an array of correct answers===
-    function getIndexes(newArr, lengthOfQuiz) {
+    function answerChoices(newArr) {
 
-        for (var i = 0; i < lengthOfQuiz; i++) {
+        for (var i = 0; i < newArr.length; i++) {
             allAnswersArray.push(newArr[i].correctAnswer);
         };
-        // console.log("all answers array: " + allAnswersArray);
+        // console.log("all answers array");
+        // console.log(allAnswersArray);
     };
 
     //======================================================
@@ -86,7 +87,7 @@ $(document).ready(function(){
 
         // display question in dom
         // console.log("right here: " + i);
-         console.log(randomNumberQuestionArray);
+        //  console.log(randomNumberQuestionArray);
         var x = inputArray[i];
         console.log("question: " + x.question);
         console.log("this is the answer: " + x.correctAnswer);
@@ -141,13 +142,13 @@ $(document).ready(function(){
         if (haveSelected) {
             haveSelected = false;
             $("#display-selected").empty();
-            console.log("this is selected: " + selected);
+            // console.log("this is selected: " + selected);
           
             // push the selected answer to the tempArray
             tempGameArray[index].selectedAnswer = selected;
-            console.log("this is the temp game array");
-            console.log(tempGameArray);
-            console.log("==================");
+            // console.log("this is the temp game array");
+            // console.log(tempGameArray);
+            // console.log("==================");
             //==================================
     
             if (tempGameArray.length === lengthOfQuiz) {
@@ -166,7 +167,7 @@ $(document).ready(function(){
     
     
         } else {
-            console.log("nope");
+            // console.log("nope");
             alert("Please make a selection");
         };
     });
@@ -174,12 +175,12 @@ $(document).ready(function(){
 
     //===== function for checking answers ========
     function checkAnswers() {
-        alert("hit");
+     
     
         for (var i = 0; i < tempGameArray.length; i++) {
     
-            console.log("this is tempgamearray " + tempGameArray[i].correctAnswer);
-            console.log("this is tempgamearray " + tempGameArray[i].selectedAnswer);
+            // console.log("this is tempgamearray " + tempGameArray[i].correctAnswer);
+            // console.log("this is tempgamearray " + tempGameArray[i].selectedAnswer);
             if (tempGameArray[i].selectedAnswer !== tempGameArray[i].correctAnswer) {
                 var wrongObj = new Object();
                 wrongObj.question = tempGameArray[i].question;
@@ -188,7 +189,7 @@ $(document).ready(function(){
                 missedAnswerArray.push(wrongObj);
             }
         };
-        console.log(missedAnswerArray);
+        // console.log(missedAnswerArray);
         $(".quiz-screen").hide();
         $(".result-screen").show();
         results();
@@ -199,22 +200,25 @@ $(document).ready(function(){
     //===== function to display results ====
     function results() {
         if (missedAnswerArray.length === 0) {
-            console.log("this is missing" + missedAnswerArray);
-            alert("good job");
+            // console.log("this is missing" + missedAnswerArray);
+           
             var correct = $("<div>");
             correct.attr("class", "all-correct").text("Great Job. 100% Correct");
             $(".display-results").append(correct);
         } else {
             for (var i = 0; i < missedAnswerArray.length; i++) {
-                var questionDiv = $("<div>");
-                questionDiv.text(missedAnswerArray[i].question);
-                var correctDiv = $("<div>");
-                correctDiv.text(missedAnswerArray[i].correctAnswer);
-                var userSelectedDiv = $("<div>");
-                userSelectedDiv.text(missedAnswerArray[i].selectedAnswer);
+                var questionDiv = $("<div>").attr("class", "result-question");
+                questionDiv.text("Code: " + missedAnswerArray[i].question);
+                var correctDiv = $("<div>").attr("class", "result-correct-answer");
+                correctDiv.text("Correct Answer: " + missedAnswerArray[i].correctAnswer);
+                var userSelectedDiv = $("<span>").attr("class", "result-selected-answer-title");
+                userSelectedDiv.text("Your Answer: ");
+                var userAnswer = $("<span>").attr("class", "result-selected-answer");
+                userAnswer.text(missedAnswerArray[i].selectedAnswer);
+                userSelectedDiv.append(userAnswer);
     
-                questionDiv.append(correctDiv).append(userSelectedDiv);
-                $(".display-results").append(questionDiv);
+                // questionDiv.append(correctDiv).append(userSelectedDiv);
+                $(".display-results").append(questionDiv).append(correctDiv).append(userSelectedDiv);
             };
     
         };
@@ -226,18 +230,24 @@ $(document).ready(function(){
 
     //====== function to reset ========
     function reset() {
+        selected;
+        haveSelected = false;
         missedAnswerArray = [];
         tempGameArray = [];
         allAnswersArray = [];
         index = 0;
         num = new Array();
         tempGameArray = [];
+        lengthOfQuiz;
+        randomNumberQuestionArray = [];
+       
         $(".display-question").empty();
         $("#display-selected").empty();
         $("#selection-area").empty();
         $(".display-results").empty();
     
-        $(".quiz-screen").show();
+        $(".welcome").show();
+        $(".quiz-screen").hide();
         $(".result-screen").hide();
     
     };

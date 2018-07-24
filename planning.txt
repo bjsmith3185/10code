@@ -1,5 +1,60 @@
 
 
+
+
+------------------------------------
+7/23
+
+need to update the random number function, it is repeating questions
+
+button to take all 95 questions
+    - in random order
+    - in numerical order
+
+dropdown button to take
+    - 1 - 10
+    -2 - 20 etc
+
+input for name
+
+status bar for percentage of test completed
+
+grade for result screen
+
+back button to review answers and make changes if needed
+
+
+===================================================
+
+how to make quiz with selections at beginning
+
+on click any button
+    - get array with question to choose from
+        - length
+        - random
+        - assending
+
+               
+                    
+
+    - get array with "wrong answers" to select from
+        - add the correct answer to this array
+
+    - display questions  and answers in dom function
+
+==============================================
+
+
+
+
+
+
+
+
+
+
+-------------------------------------------
+
 randomly select 15 questions from the 100 available
 
 ask the question
