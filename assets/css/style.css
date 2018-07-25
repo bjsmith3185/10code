@@ -9,11 +9,11 @@ body {
 /* welcome screen  */
 
 .title {
-    font-size: 54px;
+    font-size: 50px;
     font-weight: bolder;
     color:black;
-    
-    padding-bottom: 10px;
+    line-height: 1.25;
+    padding-bottom: 8px;
 }
 
 .instructions {
@@ -29,6 +29,7 @@ body {
 .sorted-title {
     font-size: 18px;
     font-weight: 600;
+    margin-bottom: 10px;
 
 }
 
@@ -36,16 +37,38 @@ body {
     font-size: 16px;
 }
 
+.full-exam-wrapper {
+    background: darkgray;
+    padding: 10px;
+    margin-top: 10px;
+}
+
 .full-exam-title {
-    font-size: 20px;
-    font-weight: 800px;
-    margin-top: 15px;
+    font-size: 22px;
+    font-weight:bold;
+   
 }
 
 .welcome-button {
     display: block;
     margin: auto;
     
+}
+
+#quiz-full-submit {
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+
+.practice-wrapper {
+    background: darkgray;
+    margin-top: 25px;
+    font-size: 26px;
+    font-weight: bold;
+    text-decoration: underline;
+    margin-bottom: 15px;
+
 }
 
 
@@ -55,25 +78,39 @@ body {
     margin: 0 auto;
 }
 
-.tens-area {
-    margin-top: 15px;
+#quiz-tens-submit {
+    margin-top: 5px;
 }
 
 .form-title {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 800px;
-    
+    /* margin-bottom: 5px; */
 }
 
-.custom-area {
+/* .custom-area {
     margin-top: 20px;
    
 
+} */
+#quiz-length {
+    width: 50px;
+    font-size: 18px;
 }
 
-.custom-btn-area {
-    margin-top: 46px;
+
+.custom-wrapper {
+    margin-top: 10px;
 }
+
+#quiz-length-submit {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+/* .custom-btn-area {
+    margin-top: 46px;
+} */
 
 
 /* quiz screen  */
