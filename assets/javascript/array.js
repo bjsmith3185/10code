@@ -33,7 +33,7 @@ var quiz = [
         usersAnswer: "",
     },
     {   question: "10-10",
-        correctAnswer: "negativee",
+        correctAnswer: "negative",
         usersAnswer: "",
     },
     {   question: "10-11",
