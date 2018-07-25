@@ -330,8 +330,10 @@ function results() {
     if (missedAnswerArray.length === 0) {
         // console.log("this is missing" + missedAnswerArray);
        
+        $(".grade").text("100%").addClass("correct text-center");
+
         var correct = $("<div>");
-        correct.attr("class", "all-correct").text("Great Job. 100% Correct");
+        correct.addClass("all-correct text-center").text("Well Done!");
         $(".display-results").append(correct);
     } else {
         
@@ -352,7 +354,7 @@ function results() {
 
         
 
-        var grade = Math.floor((missedAnswerArray.length / examArray.length) * 100);
+        var grade = 100 - (Math.floor((missedAnswerArray.length / examArray.length) * 100));
         console.log("this is grade: " + grade + "%");
 
             $(".grade").text("You scored " + grade + "%");

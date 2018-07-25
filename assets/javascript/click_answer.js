@@ -18,13 +18,13 @@ var missedAnswerArray = [
     },
 ];
 
-var examArray = [1,2,3,4,5,6,7]
+var examArray = [1,2,3,4,5,6,7,8,9,0]
 
-$(".grade").text("100%").addClass("correct text-center");
+// $(".grade").text("100%").addClass("correct text-center");
 
-var correct = $("<div>");
-correct.addClass("all-correct text-center").text("Well Done!");
-$(".display-results").append(correct);
+// var correct = $("<div>");
+// correct.addClass("all-correct text-center").text("Well Done!");
+// $(".display-results").append(correct);
 
 
 //  for (var i = 0; i < missedAnswerArray.length; i++) {
@@ -42,7 +42,7 @@ $(".display-results").append(correct);
 //     $(".display-results").append(questionDiv).append(correctDiv).append(userSelectedDiv);
 // };
 
-// var grade = Math.floor((missedAnswerArray.length / examArray.length) * 100);
-// console.log("this is grade: " + grade + "%");
+var grade = 100 - (Math.floor((missedAnswerArray.length / examArray.length) * 100));
+console.log("this is grade: " + grade + "%");
 
-//     $(".grade").text("You scored " + grade + "%");
+    $(".grade").text("You scored " + grade + "%");
