@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+    <title>do</title>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous'>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css' integrity='sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp' crossorigin='anonymous'>
+    <link rel='stylesheet' href='assets/css/style.css'>
+</head>
+<body>
+
+        <div class="welcome">
+                <div class="row welcome-heading">
+                    <div class="col-xs-12 text-center">
+                        <h1 class="title">Police 10-Code Quiz</h1>
+                    </div>
+                </div>
+        
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <h3 class="sorted-title">Select either ordered or random questions.</h3>
+                        <form id="sorted-form">
+                            <span id="radio-ordered" class="rdo-button">Ordered: </span>
+                            <input type="radio" onclick="radioValue()" name="sorted" value="ordered" id="sorted-radio" checked >
+                   
+                            <span id="radio-random" class="rdo-button">Random: </span>
+                            <input type="radio" onclick="radioValue()" name="sorted" value="random" id="sorted-radio" >
+                        </form>
+                    </div>
+                </div>
+        
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="full-exam-title text-center">Click to begin full quiz.</div>
+                    </div>
+        
+                    <div class="col-xs-12">
+                        <button class="btn btn-default welcome-button text-center" id="quiz-full-submit">Full Quiz</button>
+                    </div>
+                </div>
+        
+                <br>
+        
+                <div class="row">
+                    <div class="col-xs-9 tens-area">
+                        <form class="form-title">
+                            Quiz by 10:
+                            <select id="by-ten-Exam">
+                              <option class="tens" value="10">10-1 to 10-10</option>
+                              <option class="tens" value="20">10-11 to 10-20</option>
+                              <option class="tens" value="30">10-21 to 10-30</option>
+                              <option class="tens" value="40">10-31 to 10-40</option>
+                              <option class="tens" value="50">10-41 to 10-50</option>
+                              <option class="tens" value="60">10-51 to 10-60</option>
+                              <option class="tens" value="70">10-61 to 10-70</option>
+                              <option class="tens" value="80">10-71 to 10-80</option>
+                              <option class="tens" value="90">10-81 to 10-90</option>
+                              <option class="tens" value="99">10-91 to 10-99</option>
+                            </select>
+                        </form>
+                    </div>
+        
+                    <div class="col-xs-3 tens-area">
+                        <button class="btn btn-default welcome-button text-center" id="quiz-tens-submit">Begin</button>
+                    </div>
+                </div>
+        
+                <br>
+        
+                <div class="row">
+                    <div class="col-xs-9 custom-area">
+                        <form class="form-title">
+                            Custom Quiz Length:
+                            <input class="welcome-area text-center" type="text" id="quiz-length" placeholder="Enter length of exam">
+                        </form>
+                    </div>
+        
+                    <div class="col-xs-3 custom-btn-area">
+                        <button class="btn btn-default welcome-button text-center" id="quiz-length-submit">Begin</button>
+                    </div>
+                </div>
+                
+            </div>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js'></script>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <script type='text/javascript' src='assets/javascript/click_answer.js'></script>
+</body>
+</html>

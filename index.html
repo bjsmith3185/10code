@@ -10,30 +10,80 @@
     <link rel='stylesheet' href='assets/css/style.css'>
 </head>
 <body>
-<!-- <div class="body-container"> -->
+
 
     <!-- welcome screen  -->
     <div class="welcome">
-        <div class="row">
+        <div class="row welcome-heading">
             <div class="col-xs-12 text-center">
                 <h1 class="title">Police 10-Code Quiz</h1>
-                <h3 class="instructions text-center">Select the length of the exam.</h3>
-                <h4 class="instructions text-center">(Enter a number between 10 and 95.)</h4>
-               
             </div>
         </div>
 
         <div class="row">
-            <div class="col-xs-12 submit-body text-center">
-                <input class="welcome-area text-center" type="text" id="quiz-length">
+            <div class="col-xs-12 text-center">
+                <h3 class="sorted-title">Select either ordered or random questions.</h3>
+                <form id="sorted-form">
+                    <span id="radio-ordered" class="rdo-button">Ordered: </span>
+                    <input type="radio" onclick="radioValue()" name="sorted" value="ordered" id="sorted-radio" checked >
+            
+                    <span id="radio-random" class="rdo-button">Random: </span>
+                    <input type="radio" onclick="radioValue()" name="sorted" value="random" id="sorted-radio" >
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="full-exam-title text-center">Click to begin full quiz.</div>
+            </div>
+
+            <div class="col-xs-12">
+                <button class="btn btn-default welcome-button text-center" id="quiz-full-submit">Full Quiz</button>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+            <div class="col-xs-9 tens-area">
+                <form class="form-title">
+                    Quiz by 10:
+                    <select id="by-ten-Exam">
+                        <option class="tens" value="10">10-1 to 10-10</option>
+                        <option class="tens" value="20">10-11 to 10-20</option>
+                        <option class="tens" value="30">10-21 to 10-30</option>
+                        <option class="tens" value="40">10-31 to 10-40</option>
+                        <option class="tens" value="50">10-41 to 10-50</option>
+                        <option class="tens" value="60">10-51 to 10-60</option>
+                        <option class="tens" value="70">10-61 to 10-70</option>
+                        <option class="tens" value="80">10-71 to 10-80</option>
+                        <option class="tens" value="90">10-81 to 10-90</option>
+                        <option class="tens" value="99">10-91 to 10-99</option>
+                    </select>
+                </form>
+            </div>
+
+            <div class="col-xs-3 tens-area">
+                <button class="btn btn-default welcome-button text-center" id="quiz-tens-submit">Begin</button>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+            <div class="col-xs-9 custom-area">
+                <form class="form-title">
+                    Custom Quiz Length:
+                    <input class="welcome-area text-center" type="text" id="quiz-length" placeholder="Enter length of exam">
+                </form>
+            </div>
+
+            <div class="col-xs-3 custom-btn-area">
                 <button class="btn btn-default welcome-button text-center" id="quiz-length-submit">Begin</button>
             </div>
         </div>
-        <div class="row">
-            <div class="col-xs-12 welcome-body text-center">
-                <h3 class="instructions text-center">Press Begin to start the quiz.</h3>
-            </div>
-        </div>
+        
     </div>
 
     <!-- quiz screen  -->
@@ -80,24 +130,28 @@
         <div class="row">
             <div class="col-xs-12 text-center">
                 <h1 class="title-results">Police 10-Code Quiz</h1>
-                <h2 class="title-results-sub">Your results:</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-1"></div>
+            <div class="col-xs-10 ">
+                <div class="result-box">
+                    <div class="box-head align-left">Quiz results</div>
+                    <div class="grade text-center"></div>
+                    <div class="display-results"></div>
+                </div>
             </div>
         </div>
 
         <div class="row">
             <div class="col-xs-12 text-center">
-                <div class="display-results"></div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-xs-12 text-center">
-                <button id="reset">Reset</button>
+                <button class="btn btn-default" id="reset">Reset</button>
             </div>
         </div>
     </div>
-   
-<!-- </div> -->
+
+
 
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js'></script>
     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
@@ -107,6 +161,8 @@
     <!-- <script type='text/javascript' src='assets/javascript/smallArray.js'></script> -->
     <!-- <script type='text/javascript' src='assets/javascript/main.js'></script> -->
     <!-- <script type='text/javascript' src='assets/javascript/practice.js'></script> -->
-      <script type='text/javascript' src='assets/javascript/startOver.js'></script>
+      <!-- <script type='text/javascript' src='assets/javascript/select_quiz.js'></script> -->
+      <script type='text/javascript' src='assets/javascript/select_display_question_answers.js'></script>
+       <!-- <script type='text/javascript' src='assets/javascript/click_answer.js'></script> -->
 </body>
 </html>
